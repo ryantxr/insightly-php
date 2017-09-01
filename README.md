@@ -18,14 +18,34 @@ all major Insightly objects, including:
 * Opportunities
 * Projects
 
-To use the library, simply add insightly.php to your PHP include-path.
+To use the library, simply add Insightly.php to your PHP include-path.
 Then making requests is as simple as:
 
 ```php
-require("insightly.php");
+require_once "Insightly.php";
 
 $i = new Insightly('your-api-key');
 $contacts = $i->getContacts();
+```
+
+To add a lead:
+
+```php
+$insightly = new Insightly('your-api-key');
+
+$tags = [
+    (object)["TAG_NAME" => 'first_tag'],
+	(object)["TAG_NAME" => 'second_tag']
+]; // add multiple tags if you want
+$arr = [
+        'FIRST_NAME' => 'Jimmy', // add the person's first and last name
+        'LAST_NAME' => 'Hollow', // 
+        'ORGANIZATION_NAME' => 'Put-Organization-Name-Here',
+        'PHONE_NUMBER' => '555-555-5555',
+        'EMAIL_ADDRESS' => 'Put-Email-Here',
+        'TAGS' => $tags
+        ];
+$lead = $insightly->addLead((object)$arr);
 ```
 
 The API interface is provided by the `Insightly` class.
