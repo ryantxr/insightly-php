@@ -43,7 +43,8 @@ $arr = [
         'ORGANIZATION_NAME' => 'Put-Organization-Name-Here',
         'PHONE_NUMBER' => '555-555-5555',
         'EMAIL_ADDRESS' => 'Put-Email-Here',
-        'TAGS' => $tags
+        'TAGS' => $tags,
+        'LEAD_SOURCE_ID' => 9999999 // Get the real value for the source you want to use
         ];
 $lead = $insightly->addLead((object)$arr);
 ```
