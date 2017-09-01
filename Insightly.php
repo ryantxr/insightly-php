@@ -253,6 +253,73 @@ class Insightly{
     return $this->GET("/v2.1/Contacts/$contact_id/Tasks")->asJSON();
   }
 
+  // MARK: - Leads
+  // GET /v2.1/Leads?ids={ids}&email={email}&tag={tag}&includeConverted={includeConverted}
+  public function getLeads($options = null){
+    $email = isset($options["email"]) ? $options["email"] : null;
+    $tag = isset($options["tag"]) ? $options["tag"] : null;
+    $ids = isset($options["ids"]) ? $options["ids"] : null;
+  
+    $request = $this->GET("/v2.1/Leads");
+
+    // handle standard OData options
+    $this->buildODataQuery($request, $options);
+
+    // handle other options
+    if($email != null){
+      $request->queryParam("email", $email);
+    }
+    if($tag != null){
+      $request->queryParam("tag", $tag);
+    }
+    if($ids != null){
+      $s = "";
+      foreach($ids as $key => $value){
+        if($key > 0){
+          $s = $s . ",";
+        }
+        $s = $s . $value;
+      }
+      $request->queryParam("ids", $s);
+    }
+
+    return $request->asJSON();
+  }
+  
+  // GET /v2.1/Leads/{id}
+  // Gets a Lead
+  public function getLead($id) {
+    return $this->GET("/v2.1/Leads/" . $id)->asJSON();
+  }
+  
+  // POST /v2.1/Leads
+  // Adds a Lead
+  public function addLead($lead) {
+    $url_path = "/v2.1/Leads";
+    $request = null;
+
+    if(isset($lead->LEAD_ID) && $lead->LEAD_ID > 0){
+      $request = $this->PUT($url_path);
+    }
+    else{
+      $request = $this->POST($url_path);
+    }
+
+    return $request->body($lead)->asJSON();
+  }
+
+
+  // MARK: - Lead Sources
+  // GET /v2.1/LeadSources
+  // Gets a list of Lead Sources
+  public function getLeadSources() {
+    $request = $this->GET("/v2.1/LeadSources");
+    // handle standard OData options
+    $this->buildODataQuery($request, []);
+    return $request->asJSON();
+  }
+
+  // MARK: - Countries
   public function getCountries(){
     return $this->GET("/v2.1/Countries")->asJSON();
   }
