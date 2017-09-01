@@ -10,6 +10,6 @@
     },
 
     "autoload": {
-        "classmap": ["insightly.php"]
+        "classmap": ["Insightly.php"]
     }
 }
