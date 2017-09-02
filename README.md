@@ -1,4 +1,4 @@
-Php client library for Insightly web API (v2.1)
+PHP client library for Insightly web API (v2.1)
 ===============================================
 
 The Insightly PHP SDK enables PHP developers to quickly integrate their applications with the Insightly REST API (version 2.1).
@@ -24,8 +24,8 @@ Then making requests is as simple as:
 ```php
 require_once "Insightly.php";
 
-$i = new Insightly('your-api-key');
-$contacts = $i->getContacts();
+$insightly = new Insightly('your-api-key');
+$contacts = $insightly->getContacts();
 ```
 
 To add a lead:
@@ -35,7 +35,7 @@ $insightly = new Insightly('your-api-key');
 
 $tags = [
     (object)["TAG_NAME" => 'first_tag'],
-	(object)["TAG_NAME" => 'second_tag']
+    (object)["TAG_NAME" => 'second_tag']
 ]; // add multiple tags if you want
 $arr = [
         'FIRST_NAME' => 'Jimmy', // add the person's first and last name

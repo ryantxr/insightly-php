@@ -1,5 +1,5 @@
 <?php
-require('insightly.php');
+require 'Insightly.php';
 
 function run_tests($apikey){
   $insightly = new Insightly($apikey);
