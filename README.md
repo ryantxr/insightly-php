@@ -61,10 +61,12 @@ by setting the record id to 0 or omitting it.
 
 To obtain sample objects, you can do the following:
 
+```php
 $contact = $i->addContact('sample');
 $event = $i->addEvent('sample');
 $organization = $i->addOrganization('sample');
 $project = $i->addProject('sample');
+```
 
 This will return a random item from your account,
 so you can see what fields are required,
@@ -75,7 +77,7 @@ along with representative field values.
 These methods return a list of dictionaries containing the matching items.
 For example to request a list of all contacts, you call:
 
-$contacts = $i->getContacts()
+`$contacts = $i->getContacts();`
 
 ### Search Actions Using ODATA
 
@@ -83,6 +85,7 @@ Search methods recognize top, skip, orderby and filters parameters,
 which you can use to page, order and filter recordsets.
 These are passed via an associative array:
 
+```php
 // get the first 200 contacts   
 $contacts = $i->getContacts(array("top" => 200));
 
@@ -94,6 +97,7 @@ $contacts = $i->getContacts(array("top" => 200, "skip" => 200));
 
 // get contacts where FIRST_NAME='Brian'
 $contacts = $i->getContacts(array("filters" => array('FIRST_NAME=\'Brian\'')));
+```
 
 IMPORTANT NOTE: when using OData filters,
 be sure to include escaped quotes around the search term.
@@ -106,12 +110,14 @@ or return a (possibly empty) list of objects if successful.
 
 These methods will return a single object containing the requested item's properties.
 
-$contact = $i->getContact(123456);
+`$contact = $i->getContact(123456);`
 
 ### Delete Actions
 
 These methods will return True if successful, or raise an exception.
-e.g. $success = $i->deleteContact(123456)
+e.g.
+
+`$success = $i->deleteContact(123456)`
 
 ### Image And File Attachment Management
 
@@ -134,7 +140,7 @@ Write/update methods also have a dummy feature
 that returns sample objects that you can use as a starting point.
 For example, to obtain a sample task object, just call:
 
-$task = $i->addTask('sample');
+`$task = $i->addTask('sample');`
 
 This will return one of the tasks from your Insightly account,
 so you can get a sense of the fields and values used.
@@ -170,7 +176,7 @@ on most PHP environments).
 The wrapper functions return native PHP objects (arrays and objects),
 so working with them is easily done using built in functions. 
 
-The API interface is provided by the `Insightly` class.
+The API interface is provided by the `Ryantxr\Insightly\Client` class.
 Please refer to the source-code documentation for more information.
 
 The library was authored by Nathan Davis, and is currently in beta.
