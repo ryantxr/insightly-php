@@ -1,15 +1,17 @@
 {
-    "name": "insightly/insightly-php",
+    "name": "ryantxr/insightly-php",
     "description": "This library provides user friendly access to the version 2.1 REST API for Insightly",
     "version": "0.2",
     "minimum-stability": "dev",
 
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.6",
         "ext-curl": "*"
     },
 
     "autoload": {
-        "classmap": ["Insightly.php"]
+        "psr-0": {
+            "Ryantxr\\Insightly": "src"
+        }
     }
 }
