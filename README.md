@@ -4,7 +4,7 @@ The Insightly PHP SDK enables PHP developers to quickly integrate their applicat
 
 NOTE: this SDK currently only works with version 2.1 of the Insightly API. To use version 2.2, you'll need to modify this library, or you can use Swagger (www.swagger.io) to auto-generate an SDK (it can generate SDKs for over a dozen different target languages).
 
-NOTE: works best with PHP version 5.5.x, some users have reported issues with parse errors using older versions of PHP.
+NOTE: works best with PHP version 7.x or 5.6.x.
 
 The library handles low level communication, authentication,
 and encoding to minimize learning curve and debugging overhead for new users.
@@ -21,16 +21,16 @@ To use the library, simply add Insightly.php to your PHP include-path.
 Then making requests is as simple as:
 
 ```php
-require_once "Insightly.php";
+require_once "vendor/autoload.php";
 
-$insightly = new Ryantxr\Insightly('your-api-key');
+$insightly = new Ryantxr\Insightly\Client('your-api-key');
 $contacts = $insightly->getContacts();
 ```
 
 To add a lead:
 
 ```php
-$insightly = new Ryantxr\Insightly('your-api-key');
+$insightly = new Ryantxr\Insightly\Client('your-api-key');
 
 $tags = [
     (object)["TAG_NAME" => 'first_tag'],
